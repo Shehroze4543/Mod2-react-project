@@ -9,6 +9,7 @@ function App() {
   const [ansB, setAnswerB] = useState("");
   const [ansC, setAnswerC] = useState("");
   const [ansD, setAnswerD] = useState("");
+  const [score, setScore] = useState(0);
   const [correctAns, setCorrectAns] = useState("");
   const apiKey = "ctbYfQVwD7PYZSlHpr04pv8YRZnPWRA6Wl4CEvlB";
   const limit = 10;
@@ -38,64 +39,71 @@ function App() {
   }
   function checkAnswerA() {
     if (Object.values(correctAns)[0] === "true") {
-      console.log(`Sahi Jawab`);
+      setScore(() => score + 1);
     } else {
       console.log("Ghalt Jawab");
     }
   }
   function checkAnswerB() {
     if (Object.values(correctAns)[1] === "true") {
-      console.log(`Sahi Jawab`);
+      setScore(() => score + 1);
     } else {
       console.log("Ghalt Jawab");
     }
   }
   function checkAnswerC() {
     if (Object.values(correctAns)[2] === "true") {
-      console.log(`Sahi Jawab`);
+      setScore(() => score + 1);
     } else {
       console.log("Ghalt Jawab");
     }
   }
   function checkAnswerD() {
     if (Object.values(correctAns)[3] === "true") {
-      console.log(`Sahi Jawab`);
+      setScore(() => score + 1);
     } else {
       console.log("Ghalt Jawab");
     }
   }
   return (
     <>
-      <h3>
-        Question #{count}: {question}
-      </h3>
-      <ul>
-        <li>
-          <button onClick={checkAnswerA}>{ansA}</button>
-        </li>
-        <li>
-          <button onClick={checkAnswerB}>{ansB}</button>
-        </li>
-        {ansC === null ? null : (
-          <li>
-            <button onClick={checkAnswerC}>{ansC}</button>
-          </li>
-        )}
-        {ansD === null ? null : (
-          <li>
-            <button onClick={checkAnswerD}>{ansD}</button>
-          </li>
-        )}
-      </ul>
-      <button onClick={getData}>Click me</button>
-      <ul>
-        {Object.entries(correctAns).map(([key, val]) => (
-          <li key={key}>
-            <strong>{key}</strong>: '{val}'
-          </li>
-        ))}
-        {/* {console.log(Object.values(correctAns)[0])} */}
-      </ul>
+      {count < 3 ? (
+        <>
+          <div>
+            SCORE: {score} of {count}
+          </div>
+          <h3>
+            Question #{count}: {question}
+          </h3>
+          <ul>
+            <li>
+              <button onClick={checkAnswerA}>{ansA}</button>
+            </li>
+            <li>
+              <button onClick={checkAnswerB}>{ansB}</button>
+            </li>
+            {ansC === null ? null : (
+              <li>
+                <button onClick={checkAnswerC}>{ansC}</button>
+              </li>
+            )}
+            {ansD === null ? null : (
+              <li>
+                <button onClick={checkAnswerD}>{ansD}</button>
+              </li>
+            )}
+          </ul>
+          <button onClick={getData}>Click me</button>
+          <ul>
+            {Object.entries(correctAns).map(([key, val]) => (
+              <li key={key}>
+                <strong>{key}</strong>: '{val}'
+              </li>
+            ))}
+            {/* {console.log(Object.values(correctAns)[0])} */}
+          </ul>{" "}
+        </>
+      ) : null}
     </>
   );
 }
