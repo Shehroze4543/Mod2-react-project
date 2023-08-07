@@ -24,6 +24,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [showBtn, setShowBtn] = useState(true);
   const [gameStart, setGameStart] = useState(false);
+  const [checkWinner, setCheckWinner] = useState(false);
 
   //////////// //
 
@@ -158,14 +159,13 @@ function App() {
       ) : null}
 
       {/* //////////////////////////////////// */}
-      {(count < 11) & (gameOver === false) ? (
+      {count <= 10 && gameOver === false ? (
         <>
           <div className="container">
             <div className="main-container container-1">
               {gameStart && (
                 <>
                   <h3>
-                    {/* <p>{text}</p> */}
                     <div className="question">
                       {count}: {question}
                     </div>
@@ -222,9 +222,14 @@ function App() {
                   {count === 0 ? `Click to Start` : `Next Question`}
                 </button>
               ) : null}
-              {count > 0 && showBtn ? (
+              {count > 0 && count <= 9 && showBtn ? (
                 <button className="btn" onClick={getData}>
                   {count === 0 ? `Click to Start` : `Next Question`}
+                </button>
+              ) : null}
+              {count > 9 && showBtn ? (
+                <button className="btn" onClick={getData}>
+                  {count > 9 ? `Congratulations!!` : `d`}
                 </button>
               ) : null}
             </div>
@@ -410,6 +415,12 @@ function App() {
             </div>
           </div>
         </>
+      ) : null}
+
+      {count > 10 && gameOver === false ? (
+        <div className="millionare-div">
+          <Winner />
+        </div>
       ) : null}
     </>
   );

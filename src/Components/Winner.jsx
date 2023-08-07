@@ -2,7 +2,7 @@ import React from "react";
 
 function Winner() {
   return (
-    <div className="winner">
+    <div className="my-winner">
       <p>
         <strong>
           Congratulations, you've done it! You've answered all the questions
