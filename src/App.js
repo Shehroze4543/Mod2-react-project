@@ -1,6 +1,5 @@
 import {useState} from "react";
 import "./App.css";
-import "./MediaQuerry.css";
 import axios from "axios";
 import Amounts from "./Components/Amounts";
 import Result from "./Components/Result";
