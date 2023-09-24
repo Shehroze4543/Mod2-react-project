@@ -1,5 +1,6 @@
-import { useState } from "react";
+import {useState} from "react";
 import "./App.css";
+import "./MediaQuerry.css";
 import axios from "axios";
 import Amounts from "./Components/Amounts";
 import Result from "./Components/Result";
@@ -17,14 +18,14 @@ function App() {
   const [score, setScore] = useState(0);
   const [correctAns, setCorrectAns] = useState("");
   const apiKey = "6AAGQTFN01PTlQxNXsUitLUW0WqjeWmBOLymSuqO";
-  const limit = 5;
-  const category = "JavaScript";
+  // const limit = 5;
+  // const category = "JavaScript";
   const [rightAns, setRightAns] = useState(true);
-  const [amount, setAmount] = useState(0);
+  // const [amount, setAmount] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [showBtn, setShowBtn] = useState(true);
   const [gameStart, setGameStart] = useState(false);
-  const [checkWinner, setCheckWinner] = useState(false);
+  //const [checkWinner, setCheckWinner] = useState(false);
 
   //////////// //
 
@@ -42,18 +43,13 @@ function App() {
       )
       .then((response) => {
         console.log(response.data[0]);
-        // setData(console.log(response.data[0]));
-        // setData(console.log(response.data[0].question));
+
         setQuestion(response.data[0].question);
         setAnswerA(response.data[0].answers.answer_a);
         setAnswerB(response.data[0].answers.answer_b);
         setAnswerC(response.data[0].answers.answer_c);
         setAnswerD(response.data[0].answers.answer_d);
         setCorrectAns(response.data[0].correct_answers);
-        // console.log(response.data[0].correct_answers.answer_a_correct);
-        // console.log(response.data[0].correct_answers.answer_b_correct);
-        // console.log(response.data[0].correct_answers.answer_c_correct);
-        // console.log(response.data[0].correct_answers.answer_d_correct);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
